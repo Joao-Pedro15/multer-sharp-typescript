@@ -1,5 +1,5 @@
 import multer from 'multer'
-import path, { join, resolve } from 'path'
+import { resolve } from 'path'
 import { randomBytes } from 'crypto'
 import { Request } from 'express'
 

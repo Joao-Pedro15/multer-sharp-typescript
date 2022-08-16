@@ -8,7 +8,7 @@ router.get('/', (request:Request, response: Response) => {
 })
 
 router.post('/posts', multer(MulterConfig).single('file'), (request: Request, response: Response) => {
-    return
+    return response.status(201)
 })
 
 export default router 
