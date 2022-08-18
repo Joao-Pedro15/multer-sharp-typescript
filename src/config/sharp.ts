@@ -1,15 +1,12 @@
 import { Response, Request, NextFunction } from 'express';
 import sharp from 'sharp'
-import { resolve } from 'path'
-import { readdirSync } from 'fs'
+import { join } from 'path'
 
-export async function resizeImage(path:any, width:number) {
-   
-    const pathFile = resolve(__dirname, '..', '..', 'tmp', 'resizeImages')
-    sharp(path).resize(200, 200).toFile(pathFile, (error:Error | null , data:any) => {
-        if(error) {
-            console.log(error)
-            
-        }
-    })   
+export function resizeImage(request:Request, response: Response, next: NextFunction) {
+    const { width } = request.query
+    const compressImagePath = join(__dirname, '..', '..', 'images', new Date().getTime() + '.jpg')
+    sharp(request.file?.path).resize({ width: Number(width) }).toFile( compressImagePath, (error) => {
+        if(error)return response.status(400).send(error)
+        return response.status(201).send('Success!')
+    } )
 }
