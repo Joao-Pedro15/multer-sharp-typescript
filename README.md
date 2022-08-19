@@ -1,7 +1,11 @@
 # multer-sharp-typescript
-##h2 This project is a api typescript, working with files using multer, resize with a sharp and compress this files.
+## This project is a api typescript, working with files using multer, resize with a sharp and compress this files.
 
 ### Route
+
+#### Use insomnia to use the api
+link: https://insomnia.rest/download
+
 **path: localhost:3000/upload?width=size**
 
 *size is a number you want to resize the image*
